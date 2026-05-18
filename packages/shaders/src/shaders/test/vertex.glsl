@@ -6,19 +6,27 @@ uniform float uTime;
 // This is the value that was provided in the BufferGeometry in JS
 attribute vec3 position; // It is the data that changes with each vertex
 attribute float aRandom;
+attribute vec2 uv;
 
+varying vec2 vUv;
+varying float vElevation;
 // varying float vRandom;
 
 void main()
 {
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
-    modelPosition.z += sin(modelPosition.x * uFrequency.x - uTime) * .1;
-    modelPosition.z += sin(modelPosition.y * uFrequency.y - uTime) * .1;
+
+    float elevation = sin(modelPosition.x * uFrequency.x - uTime) * .1;
+    elevation += sin(modelPosition.y * uFrequency.x - uTime) * .1;
+    modelPosition.z += elevation;
+    
     // modelPosition.z += aRandom * 0.1;
     vec4 viewPosition = viewMatrix * modelPosition;
     // viewPosition.x -= 2.0;
     vec4 projectedPosition = projectionMatrix * viewPosition;
     gl_Position = projectedPosition;
 
+    vUv = uv;
+    vElevation = elevation;
     // vRandom = aRandom;
 }

@@ -8,6 +8,7 @@ import fragmentShader from './shaders/test/fragment.glsl'
 
 /**
  * Base
+ * pnpm -F @local/shaders dev
  */
 // Debug
 const gui = new GUI()
@@ -22,6 +23,18 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
+const flagTexture = textureLoader.load(
+    '/textures/flag.png',
+    () => {
+        console.log('texture loaded')
+        console.log(flagTexture.image)
+    }
+)
+
+// flagTexture.flipY = false;
+
+
+
 
 /**
  * Test mesh
@@ -48,7 +61,8 @@ const material = new THREE.RawShaderMaterial({
     uniforms: {
         uFrequency: { value: new THREE.Vector2(10, 5) },
         uTime: { value: 0 },
-        uColor: { value: new THREE.Color('rebeccapurple')}
+        uColor: { value: new THREE.Color('rebeccapurple')},
+        uTexture: { value: flagTexture }
     }
 })
 
