@@ -1,12 +1,12 @@
-uniform mat4 projectionMatrix; // will transform the coordinates into the clip space coordinates
-uniform mat4 viewMatrix; // applies transformation relative to the camera(position, rotation, field of view, near, far)
-uniform mat4 modelMatrix; // modelmatrix applies transformation relative to the Mesh(position, rotation, scale)
+//uniform mat4 projectionMatrix; // will transform the coordinates into the clip space coordinates
+//uniform mat4 viewMatrix; // applies transformation relative to the camera(position, rotation, field of view, near, far)
+//uniform mat4 modelMatrix; // modelmatrix applies transformation relative to the Mesh(position, rotation, scale)
 uniform vec2 uFrequency;
 uniform float uTime;
 // This is the value that was provided in the BufferGeometry in JS
-attribute vec3 position; // It is the data that changes with each vertex
+//attribute vec3 position; // It is the data that changes with each vertex
 attribute float aRandom;
-attribute vec2 uv;
+//attribute vec2 uv;
 
 varying vec2 vUv;
 varying float vElevation;
