@@ -1,0 +1,13 @@
+{
+  "name": "shaders-monorepo",
+  "private": true,
+  "packageManager": "pnpm@10.29.3",
+  "scripts": {
+    "dev:shaders": "pnpm --filter @local/shaders dev",
+    "dev:patterns": "pnpm --filter @local/shader-patterns dev",
+    "build": "pnpm -r build"
+  },
+  "dependencies": {
+    "vite-plugin-glsl": "^1.6.0"
+  }
+}
