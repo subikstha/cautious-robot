@@ -208,8 +208,34 @@ void main()
     // float strength = angle;
 
     // Pattern 42
+    // float angle = atan(vUv.x - .5, vUv.y - .5);
+    // angle /= PI * 2.0; // This goes from negative .5 to positive .5
+    // angle += .5;
+    // float strength = angle;
+
+    // Pattern 43
+    // float angle = atan(vUv.x - .5, vUv.y - .5);
+    // angle /= PI * 2.0; // This goes from negative .5 to positive .5
+    // angle += .5;
+    // angle *= 20.0;
+    // angle = mod(angle, 1.0);
+    // float strength = angle;
+
+    // Pattern 44
+    // float angle = atan(vUv.x - .5, vUv.y - .5);
+    // angle /= PI * 2.0;
+    // angle += .5;
+    // float strength = sin(angle * 100.0);
+
+    // Pattern 45 
+
     float angle = atan(vUv.x - .5, vUv.y - .5);
-    float strength = angle;
+    angle /= PI * 2.0;
+    angle += .5;
+    float sinusoid = sin(angle * 100.0);
+
+    float radius = .25 + sinusoid * .02;
+    float strength = 1.0 - step(.01, abs(distance(vUv, vec2(0.5)) - radius));
     gl_FragColor = vec4(strength, strength, strength, 1.0);
 
 }
