@@ -90,6 +90,7 @@ const generateGalaxy = () =>
     geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1))
 
     console.log('Geometry is', geometry)
+    console.log('Proto of geometry is', geometry.__proto__)
 
     /**
      * Material
@@ -101,9 +102,10 @@ const generateGalaxy = () =>
         vertexShader: galaxyVertexShader,
         fragmentShader: galaxyFragmentShader,
         uniforms: {
-            uSize: { value: 8.0 * renderer.getPixelRatio() }
+            uSize: { value: 30.0 * renderer.getPixelRatio() }
         }
     })
+    
 
     /**
      * Points
@@ -169,6 +171,10 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 generateGalaxy()
+
+window.app = {
+    generateGalaxy
+}
 
 /**
  * Animate
