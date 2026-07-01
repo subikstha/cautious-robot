@@ -98,7 +98,7 @@ const generateGalaxy = () =>
     material = new THREE.ShaderMaterial({
         depthWrite: false,
         blending: THREE.AdditiveBlending,
-        vertexColors: true,
+        vertexColors: true, // This will add the attribute color inside of the vertex shader (attribute vec3 color)
         vertexShader: galaxyVertexShader,
         fragmentShader: galaxyFragmentShader,
         uniforms: {
