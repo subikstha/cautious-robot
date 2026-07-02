@@ -27,7 +27,7 @@ parameters.branches = 3
 parameters.spin = 1
 parameters.randomness = 0.5
 parameters.randomnessPower = 3
-parameters.insideColor = '#ff6030'
+parameters.insideColor = '#4f4745'
 parameters.outsideColor = '#1b3984'
 
 let geometry = null
@@ -102,6 +102,7 @@ const generateGalaxy = () =>
         vertexShader: galaxyVertexShader,
         fragmentShader: galaxyFragmentShader,
         uniforms: {
+            uTime: {value: 0}, 
             uSize: { value: 30.0 * renderer.getPixelRatio() }
         }
     })
@@ -184,6 +185,9 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+
+    // Update material
+    material.uniforms.uTime.value = elapsedTime * .2;
 
     // Update controls
     controls.update()
